@@ -1,6 +1,6 @@
 ---
 name: Propuesta de Expansión de Sistema
-about: Proponer una nueva funcionalidad o mejora mayor en Helion OS
+about: Proponer una nueva funcionalidad o mejora mayor en Helion
 title: '[PROPUESTA] '
 labels: ['enhancement']
 assignees: []

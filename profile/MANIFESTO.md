@@ -1,6 +1,6 @@
 # The Helion Way: Nuestro Manifiesto de Ingeniería
 
-Helion OS es un producto propietario construido con rigor de código abierto. Publicamos nuestros principios para dar transparencia a nuestros clientes y establecer el estándar para futuros miembros del equipo.
+Helion es un producto propietario construido con rigor de código abierto. Publicamos nuestros principios para dar transparencia a nuestros clientes y establecer el estándar para futuros miembros del equipo.
 
 La industria gastronómica ha operado por décadas sobre sistemas legacy que colapsan en hora punta. Nosotros construimos para el restaurante del futuro: distribuido, resiliente y gobernado por decisiones de arquitectura documentadas y auditables.
 

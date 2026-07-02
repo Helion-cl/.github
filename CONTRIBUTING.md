@@ -1,12 +1,12 @@
-# Ingeniería en Helion OS
+# Ingeniería en Helion
 
-> **Helion OS es un proyecto de código cerrado. No aceptamos Pull Requests de externos.** Este documento describe nuestros estándares operativos internos y funciona como referencia pública de nuestras prácticas de ingeniería.
+> **Helion es un proyecto de código cerrado. No aceptamos Pull Requests de externos.** Este documento describe nuestros estándares operativos internos y funciona como referencia pública de nuestras prácticas de ingeniería.
 
 ---
 
 ## Configuración del Entorno Local
 
-Helion OS corre sobre **Cloudflare Workers** con **D1** como base de datos distribuida. El entorno de desarrollo emula esta infraestructura mediante **Wrangler**.
+Helion corre sobre **Cloudflare Workers** con **D1** como base de datos distribuida. El entorno de desarrollo emula esta infraestructura mediante **Wrangler**.
 
 ### Requisitos previos
 

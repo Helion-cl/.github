@@ -8,7 +8,7 @@
 
 ## Contexto
 
-Helion OS se construye sobre un stack tecnológico no trivial — **SvelteKit** como framework frontend, **Cloudflare Workers** y **D1** como plataforma Edge de ejecución y datos, **Durable Objects** para estado compartido, y **Turnstile** para protección anti-bot. Cada una de estas elecciones responde a un análisis profundo de trade-offs que debe perdurar más allá de la memoria del equipo.
+Helion se construye sobre un stack tecnológico no trivial — **SvelteKit** como framework frontend, **Cloudflare Workers** y **D1** como plataforma Edge de ejecución y datos, **Durable Objects** para estado compartido, y **Turnstile** para protección anti-bot. Cada una de estas elecciones responde a un análisis profundo de trade-offs que debe perdurar más allá de la memoria del equipo.
 
 Sin un registro formal, el razonamiento arquitectónico se diluye en:
 
@@ -16,7 +16,7 @@ Sin un registro formal, el razonamiento arquitectónico se diluye en:
 - **Commits dispersos** sin contexto de por qué se tomó una dirección y no otra.
 - **Conocimiento tribal** que se pierde cuando un miembro del equipo rota.
 
-Al mismo tiempo, Helion OS es un producto **propietario y de código cerrado**. Exponer el detalle completo de nuestras decisiones de diseño en un repositorio público comprometería propiedad intelectual. Necesitamos un mecanismo que:
+Al mismo tiempo, Helion es un producto **propietario y de código cerrado**. Exponer el detalle completo de nuestras decisiones de diseño en un repositorio público comprometería propiedad intelectual. Necesitamos un mecanismo que:
 
 1. Mantenga el historial de diseño **visible al público** como vitrina de rigor ingenieril.
 2. **Proteja la propiedad intelectual** manteniendo el detalle de implementación en un sistema privado.
