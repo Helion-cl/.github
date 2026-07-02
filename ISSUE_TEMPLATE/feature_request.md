@@ -1,27 +1,34 @@
 ---
-name: Solicitud de Feature
-about: Proponer una nueva funcionalidad para Helion OS
-title: '[FEATURE] '
+name: Propuesta de Expansión de Sistema
+about: Proponer una nueva funcionalidad o mejora mayor en Helion OS
+title: '[PROPUESTA] '
 labels: ['enhancement']
 assignees: []
 ---
 
-## Problema que Resuelve
+## Problema de Negocio
 
-<!-- Describí el problema o necesidad que motiva esta feature. ¿Qué fricción operativa, limitación técnica o caso de uso no está cubierto hoy? -->
+<!-- Describí el problema u oportunidad desde la perspectiva del restaurante. ¿Qué fricción operativa, pérdida de ingresos o riesgo estamos resolviendo? Vinculá a datos si existen (métricas, feedback de clientes, observaciones de campo). -->
 
-## Solución Propuesta
+## Diseño Propuesto
 
-<!-- Describí la solución que imaginás. ¿Cómo debería funcionar desde la perspectiva del usuario? ¿Qué componentes, endpoints o flujos nuevos se necesitarían? Sé específico. -->
+<!-- Describí la solución con suficiente detalle para que el equipo evalúe viabilidad técnica. Incluí: flujos de usuario, endpoints nuevos o modificados, modelos de datos afectados, consideraciones de Edge (Workers, D1, Durable Objects). -->
+
+## ¿Existe Investigación Previa en Obsidian?
+
+<!-- Obligatorio: antes de abrir esta propuesta, verificá si ya hay notas, ADRs o exploraciones relacionadas en el Vault. -->
+
+- [ ] Sí, investigación existente en el Vault — Referencia: `[[nota-relacionada]]`
+- [ ] No, este es un espacio no explorado — Se requiere investigación previa antes de implementar
+
+**Notas vinculadas:**
+
+<!-- Listá las notas del Vault que contextualizan o respaldan esta propuesta. -->
 
 ## Alternativas Consideradas
 
-<!-- ¿Qué otras formas de resolver el problema evaluaste? ¿Por qué las descartaste? -->
+<!-- ¿Qué otras formas de resolver el problema evaluaste? ¿Por qué no son adecuadas? -->
 
 ## Métricas de Éxito
 
-<!-- ¿Cómo mediríamos que esta feature cumple su objetivo? (ej. reducción de tiempo en tarea X, N restaurantes activándola en el primer mes) -->
-
-## Contexto Adicional
-
-<!-- Screenshots, mockups, referencias a productos similares, links a discusiones previas. Cualquier material que ayude a entender la propuesta. -->
+<!-- ¿Cómo mediríamos que la expansión cumple su objetivo? (ej. reducción de tiempo en tarea X, N restaurantes adoptándola en el primer mes, disminución de tickets de soporte). -->

@@ -1,34 +1,32 @@
-# Contribuyendo a Helion OS
+# Ingeniería en Helion OS
 
-Gracias por tu interés en contribuir a Helion OS. Este documento define el flujo de trabajo, estándares de calidad y convenciones que todo contribuidor debe seguir.
+> **Helion OS es un proyecto de código cerrado. No aceptamos Pull Requests de externos.** Este documento describe nuestros estándares operativos internos y funciona como referencia pública de nuestras prácticas de ingeniería.
 
 ---
 
-## Configuración Local
+## Configuración del Entorno Local
 
-Helion OS corre sobre **Cloudflare Workers** con **D1** como base de datos. Para desarrollar localmente necesitás emular ese entorno.
+Helion OS corre sobre **Cloudflare Workers** con **D1** como base de datos distribuida. El entorno de desarrollo emula esta infraestructura mediante **Wrangler**.
 
 ### Requisitos previos
 
 - Node.js 20+
 - npm 10+
-- Cuenta de Cloudflare (free tier suficiente)
+- Cuenta de Cloudflare con acceso al equipo Helion
 
-### Instalación
+### Puesta en marcha
 
 ```bash
-# Clonar el repositorio
+# Clonar el repositorio (acceso restringido a miembros del equipo)
 git clone https://github.com/Helion-cl/helion-os.git
 cd helion-os
 
-# Instalar dependencias del frontend
+# Instalar dependencias
 cd frontend && npm install && cd ..
-
-# Instalar dependencias del backend
 cd backend && npm install && cd ..
 ```
 
-### Entorno local con Wrangler
+### Emulación Edge con Wrangler
 
 ```bash
 # Iniciar D1 local y el worker de API
@@ -41,13 +39,13 @@ cd frontend
 npm run dev
 ```
 
-El frontend corre en `http://localhost:5173` y el backend en `http://localhost:8787`. Las variables de entorno se configuran en `backend/.dev.vars` (ver `.env.example`).
+El frontend corre en `http://localhost:5173` y el backend en `http://localhost:8787`. Las variables de entorno se configuran en `backend/.dev.vars`.
 
 ---
 
 ## Convenciones de Commits
 
-Este repositorio sigue el estándar **Conventional Commits**. Cada mensaje de commit debe tener la estructura:
+Seguimos el estándar **Conventional Commits**:
 
 ```
 <tipo>(<scope> opcional): <descripción breve>
@@ -55,20 +53,16 @@ Este repositorio sigue el estándar **Conventional Commits**. Cada mensaje de co
 <cuerpo opcional>
 ```
 
-Tipos permitidos:
-
 | Tipo | Uso |
 |------|-----|
 | `feat` | Nueva funcionalidad |
 | `fix` | Corrección de bug |
-| `chore` | Tareas de mantenimiento, configuración, dependencias |
+| `chore` | Mantenimiento, configuración, dependencias |
 | `docs` | Cambios en documentación |
-| `refactor` | Reestructuración de código sin cambiar comportamiento |
-| `test` | Añadir o modificar tests |
+| `refactor` | Reestructuración sin cambio de comportamiento |
+| `test` | Tests |
 | `perf` | Mejora de rendimiento |
-| `style` | Cambios de formato, linting (no de lógica) |
-| `ci` | Cambios en CI/CD |
-| `revert` | Reversión de un commit anterior |
+| `ci` | CI/CD |
 
 **Ejemplos:**
 
@@ -80,77 +74,67 @@ chore(deps): actualizar @sveltejs/kit a 2.8.0
 
 ---
 
-## Estilo de Código
+## Gestión de Conocimiento
+
+La documentación profunda, las investigaciones técnicas y la toma de decisiones arquitectónicas viven en nuestro **Obsidian Vault**. Este grafo de conocimiento es la fuente de verdad del proyecto y es orquestado mediante **MCP (Model Context Protocol)** por nuestros agentes de IA.
+
+### Flujo de decisión
+
+1. **Investigar** — Toda exploración técnica se documenta como nota en el Vault.
+2. **Conectar** — Se establecen enlaces bidireccionales con módulos, APIs y decisiones relacionadas.
+3. **Decidir** — Las conclusiones se formalizan como ADRs y se publican en `docs/architecture-decisions/`.
+4. **Ejecutar** — Los agentes MCP extraen contexto del Vault para asistir en la implementación.
+
+### Sincronización Vault ↔ Código
+
+- Cada cambio significativo en el código debe reflejarse en la nota de módulo correspondiente del Vault.
+- Los ADRs públicos en este repositorio son un subconjunto curado del conocimiento interno.
+- El detalle de implementación y la propiedad intelectual permanecen en el Vault privado.
+
+---
+
+## Stack y Estándares
 
 ### TypeScript
 
 - **`strict: true`** en `tsconfig.json`. Sin excepciones.
-- Tipos explícitos en todas las firmas de funciones exportadas.
-- Prohibido `any`. Usar `unknown` y type narrowing si el tipo es realmente desconocido.
+- Prohibido `any`. Usar `unknown` y type narrowing.
 - Preferir `interface` sobre `type` para shapes de objeto.
-- `import type` para imports que solo se usan en tiempo de compilación.
+- `import type` para imports de solo compilación.
+
+### Svelte (Frontend)
+
+- Runas de Svelte 5 (`$state`, `$derived`, `$effect`, `$props`). Prohibido `onMount`, `on:click`, `<slot>`.
+- Estilos exclusivamente con Tailwind CSS.
+- Componentes UI vía `npx shadcn-svelte@latest add`.
+
+### Fastify (Backend)
+
+- Handlers puros con repositories. Sin queries crudas en handlers.
+- Validación de entrada con Zod en todas las rutas.
+- Errores custom con `code` y `statusCode`.
 
 ### Formateo y Linting
 
-El proyecto usa **Prettier** y **ESLint** con configuraciones compartidas en la raíz.
-
 ```bash
-# Formatear todo el proyecto
-npm run format
-
-# Linting
-npm run lint
-
-# Linting con auto-fix
-npm run lint:fix
+npm run format        # Prettier
+npm run lint          # ESLint
+npm run lint:fix      # ESLint auto-fix
 ```
 
-El CI rechazará cualquier PR que no pase `npm run lint` y `npm run format:check`.
-
-### Svelte
-
-- Componentes con `<script lang="ts">`.
-- Usar runas de Svelte 5 (`$state`, `$derived`, `$effect`, `$props`). Prohibido `onMount`, `on:click`, `<slot>`.
-- Estilos exclusivamente con Tailwind CSS. No archivos `.css` nuevos.
-- Componentes UI vía `npx shadcn-svelte@latest add <componente>`. No reinventar componentes estándar.
-
-### Fastify / Backend
-
-- Handlers puros: sin acceso directo a base de datos. Usar repositories.
-- Validación de entrada con Zod en todas las rutas.
-- Errores custom con `code` y `statusCode`.
-- Schemas de ruta co-ubicados en archivos `schemas.ts`.
+El CI rechaza cualquier cambio que no pase lint y format check.
 
 ---
 
-## Flujo de Trabajo
+## Flujo de Trabajo Interno
 
-1. **Abrir un issue** describiendo el bug o feature antes de codificar.
-2. **Crear una rama** desde `main` con formato `tipo/descripcion` (ej. `feat/d1-indexes`, `fix/auth-token-refresh`).
+1. **Abrir un issue** usando las plantillas de este repositorio.
+2. **Crear una rama** desde `main` con formato `tipo/descripcion`.
 3. **Desarrollar** siguiendo las convenciones de este documento.
-4. **Abrir un Pull Request** usando la plantilla provista. El PR debe pasar CI (lint, type-check, tests).
-5. **Solicitar review** de al menos un maintainer.
-6. **Merge** mediante squash merge a `main`.
+4. **Documentar en el Vault** los cambios que afecten arquitectura, APIs o decisiones de diseño.
+5. **Abrir un Pull Request** usando la plantilla provista.
+6. **Merge** mediante squash merge a `main` tras revisión de al menos un miembro del equipo.
 
 ---
 
-## Tests
-
-- Backend: tests de integración con `app.inject()` (Vitest). No se levanta servidor real.
-- Frontend: tests unitarios con Vitest + Testing Library.
-- Cobertura mínima: 80% en servicios y repositories del backend.
-
-```bash
-# Correr todos los tests
-npm test
-
-# Solo backend
-cd backend && npx vitest run
-
-# Solo frontend
-cd frontend && npx vitest run
-```
-
----
-
-> ¿Dudas? Abrí un issue con label `question` o escribinos en el canal #eng de nuestro Slack.
+> El rigor en la documentación es tan importante como el rigor en el código. Un sistema sin memoria está condenado a repetir sus errores.

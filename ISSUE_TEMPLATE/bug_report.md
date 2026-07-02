@@ -1,41 +1,45 @@
 ---
-name: Reporte de Bug
-about: Reportar un error o comportamiento inesperado en Helion OS
-title: '[BUG] '
+name: Reporte de Anomalía Operativa
+about: Reportar un error o degradación en producción
+title: '[ANOMALÍA] '
 labels: ['bug']
 assignees: []
 ---
 
-## Descripción del Bug
+## Impacto en Producción
 
-<!-- Describí el problema de forma clara y concisa. ¿Qué ocurrió que no debería haber ocurrido? -->
+<!-- Marcá el nivel de impacto operativo actual -->
 
-## Pasos para Reproducir
+- [ ] 🔴 **Alto** — Servicio interrumpido, clientes afectados, pérdida de transacciones
+- [ ] 🟡 **Medio** — Funcionalidad degradada pero con workaround disponible
+- [ ] 🟢 **Bajo** — Defecto cosmético o en funcionalidad no crítica
+
+## Descripción de la Anomalía
+
+<!-- Describí el comportamiento observado y cómo difiere del esperado. -->
+
+## Pasos de Reproducción
 
 1.
 2.
 3.
 4.
 
-## Comportamiento Esperado
+## Logs de Cloudflare
 
-<!-- ¿Qué debería haber pasado en lugar del error? -->
+<!-- Si la anomalía involucra Workers, D1, Durable Objects o Turnstile, adjuntá los logs relevantes de Cloudflare Dashboard o Wrangler tail. -->
 
-## Comportamiento Actual
-
-<!-- ¿Qué pasó realmente? Incluí mensajes de error si los hay. -->
+```
+<!-- Pegar logs aquí -->
+```
 
 ## Entorno
 
-- **Navegador:** [ej. Chrome 131, Firefox 133, Safari 18]
-- **Sistema Operativo:** [ej. macOS 15, Windows 11, iOS 18]
-- **Dispositivo:** [ej. Desktop, iPhone 15, Android Tablet]
-- **Versión de Helion OS:** [ej. v1.4.2 — visible en el footer del admin]
+- **Rama/versión desplegada:** [ej. main @ a1b2c3d, v1.4.2]
+- **Navegador (si aplica):** [ej. Chrome 131, POS Android]
+- **Tenant(s) afectado(s):** [ej. restaurante-demo, todos]
+- **Zona horaria del incidente:** [ej. 2026-07-02 14:30 CLT]
 
-## Capturas de Pantalla
+## Evidencia Adicional
 
-<!-- Si es aplicable, adjuntá screenshots o grabaciones de pantalla que muestren el problema. -->
-
-## Contexto Adicional
-
-<!-- Cualquier otra información que pueda ayudar a diagnosticar el bug: logs, requests de red, pasos previos, condiciones específicas del tenant, etc. -->
+<!-- Screenshots, grabaciones de pantalla, respuestas de API, trazas de error. -->

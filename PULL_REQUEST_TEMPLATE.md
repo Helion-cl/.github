@@ -1,7 +1,5 @@
 ## Tipo de PR
 
-<!-- Marcá con una x los tipos que apliquen. Podés marcar más de uno. -->
-
 - [ ] 🚀 `feat` — Nueva funcionalidad
 - [ ] 🐛 `fix` — Corrección de bug
 - [ ] 🔧 `chore` — Mantenimiento, configuración, dependencias
@@ -18,11 +16,9 @@
 
 ## ¿Cómo fue probado?
 
-<!-- Describí los pasos que seguiste para verificar que los cambios funcionan correctamente. Incluí comandos, entornos, casos de prueba. -->
+<!-- Describí los pasos de verificación: comandos, entornos, casos de prueba. -->
 
 ## Checklist de Calidad
-
-<!-- Marcá con una x lo que hayas verificado. -->
 
 - [ ] El código compila sin errores (`npm run build` en frontend y backend)
 - [ ] No hay errores de linter (`npm run lint`)
@@ -30,13 +26,22 @@
 - [ ] Los tests pasan (`npm test`)
 - [ ] Agregué o actualicé tests para cubrir los cambios
 - [ ] Verifiqué manualmente los flujos afectados en entorno local
-- [ ] No introduje regresiones en funcionalidad existente
-- [ ] Revisé el impacto de los cambios con `trace_path` y `detect_changes`
+
+## Sincronización con el Vault
+
+<!-- Obligatorio para cambios que afecten arquitectura, APIs, modelos de datos o decisiones de diseño. -->
+
+- [ ] **Documentación actualizada en Obsidian** — La nota del módulo correspondiente refleja los cambios de este PR
+- [ ] **No aplica** — Este PR no modifica comportamiento, APIs ni modelos de datos
+
+**Notas del Vault afectadas:**
+
+<!-- Listá las notas modificadas o creadas en esta iteración (ej. [[03-Modulos/Auth y usuarios]], [[04-API/nuevo-endpoint]]). -->
 
 ## Screenshots / Evidencia
 
-<!-- Si el PR cambia la UI, adjuntá screenshots del antes y después. Para cambios de API, adjuntá respuestas de ejemplo. -->
+<!-- Antes y después si el PR cambia la UI. Respuestas de API si cambian endpoints. -->
 
 ## Notas para el Reviewer
 
-<!-- Cualquier contexto adicional que ayude a revisar el PR: decisiones trade-off, deuda técnica asumida, riesgos identificados. -->
+<!-- Decisiones trade-off, deuda técnica asumida, riesgos identificados. -->
