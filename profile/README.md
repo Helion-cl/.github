@@ -1,4 +1,4 @@
-<h1 align="center">Helion OS 🔴</h1>
+<h1 align="center">Helion</h1>
 
 <p align="center">
   <em>El cerebro operativo para restaurantes de alto volumen.</em>
